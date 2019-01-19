@@ -1,5 +1,5 @@
 #!/bin/bash
-TEMP="init_c/temp.txt"
+TEMP="init/temp.txt"
 NAME=`cat ${TEMP} | awk '{print $1}'`
 DES="src/`cat ${TEMP} | awk '{print $2}'`"
 POSTFIX=`cat ${TEMP} | awk '{print $3}'`
