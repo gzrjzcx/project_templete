@@ -38,10 +38,10 @@ case "${ERROR}" in
 	case ${yno} in
 
 		[yY]|[yY][Ee][Ss])	echo "Please rename the project directory: "
-							read name
-							mv ../project_templete ${name}
 							rm -rf init
 							rm -rf .git
+							echo "All init files are removed, please do not \
+							forget to rename project directory"
 							;;
 
 		[nN]|[n|N][O|o]) 	echo "Not do any thing"
