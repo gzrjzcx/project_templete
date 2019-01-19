@@ -30,18 +30,16 @@ done
 
 case "${ERROR}" in
 
-0) 	echo -e "Can not pass submitting check, please check by hand..."
+1) 	echo -e "Can not pass submitting check, please check by hand..."
 	;;
 
-1)	echo -n "Pass submitting check, do you want to delete init dir? [yes or no]:"
+0)	echo -n "Pass submitting check, do you want to delete init dir? [yes or no]:"
 	read yno
 	case ${yno} in
 
-		[yY]|[yY][Ee][Ss])	echo "Please rename the project directory: "
-							rm -rf init
+		[yY]|[yY][Ee][Ss])	rm -rf init
 							rm -rf .git
-							echo "All init files are removed, please do not \
-							forget to rename project directory"
+							echo "All init files are removed, please do not forget to rename project directory"
 							;;
 
 		[nN]|[n|N][O|o]) 	echo "Not do any thing"
