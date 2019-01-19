@@ -37,7 +37,12 @@ case "${ERROR}" in
 	read yno
 	case ${yno} in
 
-		[yY]|[yY][Ee][Ss])	rm -rf init;;
+		[yY]|[yY][Ee][Ss])	echo "Please rename the project directory: "
+							read name
+							mv ../project_templete ${name}
+							rm -rf init
+							rm -rf .git
+							;;
 
 		[nN]|[n|N][O|o]) 	echo "Not do any thing"
 							exit 1
