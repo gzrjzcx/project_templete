@@ -37,4 +37,18 @@ Initialize the project, create the necessary directories, and the `main.c` file 
 ```sh
 $ make cinit
 ```
-Create the new C files. 
+Create the new C files. There are 3 different methods to create .h or .c files:
+```sh
+$ make cnew [name] [path] [flag]
+```
+The default situation is that new files are created inside the `src/` directory, in other words, the default path is `src/[path]` . If there is no flag passed to specify which file(.h/.c) is created, it is default situation, and now both .c file and .h file will be created with passed `[name]`. For example, if we want to create `dog.h and dog.c` files inside `zoo/` directory:
+```sh
+$ make cnew dog zoo
+```
+If we want to only create .h or .c file, we can pass `h` or `c` parameter to the command line.  
+**Please note that in this situation we must explicitly specify the entire path.**  
+For example, if we want to create `resource.h` inside `includes/` directory:
+```sh
+$ make cnew resource includes h
+```
+The other difference between this situation and default situation is that here the specified directory must exist, if not, it will print the error message. However, in the default situation, if the directory not exist, it will be created firstly inside `src/` directory.
