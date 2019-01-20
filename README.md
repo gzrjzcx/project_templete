@@ -13,10 +13,6 @@ The high-level view of the whole file structure is below:
 ├── res
 ├── scripts
 └── src
-    ├── affinity
-    ├── loops
-    ├── omplib
-    └── utils
 ```
 - `includes\: contains the basic shared .h files like data structure and global macros.`
 - `res\: contains the dependent resources or generated resourcese`
@@ -27,4 +23,18 @@ The high-level view of the whole file structure is below:
 - `out\: contains all generated output files.`
 
 ## Usage
-##
+### 1. What is included in the project templete
+There are two Makefiles to control the action:
+- The `Makefile` outside the `init/` directory is a templete for the future project, however there are also some rules in this `Makefile` to control the inside makefile.
+- The `init_c.mk` inside the `init/` directory is the real makefile to create necessary project directories and C files.
+
+There are two bash scripts inside the `inti/` directory:
+- `create_c.sh`: Create initialized C files with different passed arguments.
+- `submit_check.sh`: Check if the entire file structure is complete, and if there is any directory is empty.
+
+### 2.How to use
+Initialize the project, create the necessary directories, and the `main.c` file inside the `src/` dircetory.
+```sh
+$ make cinit
+```
+Create the new C files. 
