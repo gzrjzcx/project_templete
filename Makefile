@@ -111,8 +111,8 @@ cnew:
 submitcheck:
 	@make -f $(CMF) submitcheck
 
-.PHONY: cclean
-cclean:
+.PHONY: cclean_
+cclean_:
 	@make -f $(CMF) cclean
 
 

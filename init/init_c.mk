@@ -15,7 +15,7 @@ NAME = default
 # --------------- set rules ---------------
 .PHONY: cinit
 cinit:
-	@mkdir -p $(SRC) $(RES) $(INC)
+	@mkdir -p $(SRC) $(RES) $(INC) $(OBJ) $(OUT) $(BIN)
 	@touch $(SRC)/main.c
 	@echo "#include <stdio.h>" > $(SRC)/main.c
 
@@ -33,8 +33,7 @@ submitcheck:
 
 .PHONY: cclean
 cclean:
-	@pwd
-	@rm -rf $(SRC) $(RES) $(INC)
+	@rm -rf $(SRC) $(RES) $(INC) $(OBJ) $(OUT) $(BIN)
 
 %:
 	@:

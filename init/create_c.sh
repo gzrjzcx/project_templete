@@ -1,7 +1,6 @@
 #!/bin/bash
 TEMP="init/temp.txt"
 NAME=`cat ${TEMP} | awk '{print $1}'`
-DES="src/`cat ${TEMP} | awk '{print $2}'`"
 POSTFIX=`cat ${TEMP} | awk '{print $3}'`
 DNAME=`echo "${NAME}" | awk '{print toupper($0)}'`
 NAME+=.${POSTFIX}
@@ -11,7 +10,6 @@ function create_h(){
 		if [ -f "${NAME}" ]; then
 			echo "${NAME} file exists, create ${NAME} FAILURE!!!"
 		else
-			mkdir -p ${DES}
 			echo "#ifndef __${DNAME}_H__" >> ${DES}/${NAME}
 			echo "#define __${DNAME}_H__" >> ${DES}/${NAME}
 			echo "" >> ${DES}/${NAME}
@@ -20,14 +18,7 @@ function create_h(){
 			echo "#endif //__${DNAME}_H__" >> ${DES}/${NAME}
 		fi
 	else
-		echo "${DES} dir not exists, create ${NAME} firstly..."
-		mkdir -p ${DES}
-		echo "#ifndef __${DNAME}_H__" >> ${DES}/${NAME}
-		echo "#define __${DNAME}_H__" >> ${DES}/${NAME}
-		echo "" >> ${DES}/${NAME}
-		echo "" >> ${DES}/${NAME}
-		echo "" >> ${DES}/${NAME}
-		echo "#endif //__${DNAME}_H__" >> ${DES}/${NAME}
+		echo "create ${NAME} file FAILURE: directory \"${DES}/\" not exists..."
 	fi
 }
 
@@ -41,7 +32,7 @@ function create_c(){
 			echo "" >> ${DES}/${NAME}
 		fi
 	else
-		echo "${DES} dir not exists, create ${NAME} firstly..."
+		echo "directory \"${DES}/\" not exists, create \"${DES}/\" firstly..."
 		mkdir -p ${DES}
 			echo "#include <stdio.h>" >> ${DES}/${NAME}
 			echo "" >> ${DES}/${NAME}
@@ -50,17 +41,26 @@ function create_c(){
 
 case "${POSTFIX}" in
 
-h)	create_h
-	;;
-
-c)	create_c
-	;;
-
-*)  NAME+=h	
+h)	DES="`cat ${TEMP} | awk '{print $2}'`"
 	create_h
-	NAME=`echo "${NAME}" | cut -d'.' -f 1`
-	NAME+=.c
+	;;
+
+c)	DES="`cat ${TEMP} | awk '{print $2}'`"
+	if [ ! -d "${DES}" ]; then
+		echo "create ${NAME} file FAILURE: directory \"${DES}/\" not exists..."
+	else
+		create_c
+	fi
+	;;
+
+# new directory will only be created at create_c function. Therefore here must
+# create_c firstly.
+*)  DES="src/`cat ${TEMP} | awk '{print $2}'`"
+	NAME+=c	
 	create_c
+	NAME=`echo "${NAME}" | cut -d'.' -f 1`
+	NAME+=.h
+	create_h
 	;;
 esac
 		
