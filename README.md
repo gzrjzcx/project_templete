@@ -62,4 +62,4 @@ The script `submit_check.sh` will check if the standard file structue is complet
 ```sh
 make submitcheck
 ```
-**Please do not forget to change the name of your project directory.**
+**Please do not forget to change the name of your project directory. :wink:**
