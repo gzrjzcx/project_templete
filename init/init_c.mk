@@ -7,6 +7,7 @@ BIN = bin
 RES = res
 OUT = out
 INC = includes
+SCRIPTS = scripts
 INT = init
 
 TEMP = temp.txt
@@ -15,7 +16,7 @@ NAME = default
 # --------------- set rules ---------------
 .PHONY: cinit
 cinit:
-	@mkdir -p $(SRC) $(RES) $(INC) $(OBJ) $(OUT) $(BIN)
+	@mkdir -p $(SRC) $(RES) $(INC) $(OBJ) $(OUT) $(BIN) $(SCRIPTS)
 	@touch $(SRC)/main.c
 	@echo "#include <stdio.h>" > $(SRC)/main.c
 
@@ -33,7 +34,7 @@ submitcheck:
 
 .PHONY: cclean
 cclean:
-	@rm -rf $(SRC) $(RES) $(INC) $(OBJ) $(OUT) $(BIN)
+	@rm -rf $(SRC) $(RES) $(INC) $(OBJ) $(OUT) $(BIN) $(SCRIPTS)
 
 %:
 	@:
