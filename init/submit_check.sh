@@ -32,7 +32,8 @@ case "${ERROR}" in
 
 1) 	echo -e "Can not pass submitting check, please check by hand..."
 	if [[ ${1}='f' ]]; then
-		echo -n "\033[0;31mViolent Mode\033[0m, do you want to delete init dir? [yes or no]:"
+		echo -e "\033[1;31m Violent Mode!!! \033[0m"
+		echo -n "Do you want to delete \"init/\" dir? [yes or no]:"
 		read yno
 		case ${yno} in
 
@@ -41,15 +42,15 @@ case "${ERROR}" in
 								echo "All init files are removed, please do not forget to rename project directory"
 								;;
 
-			[nN]|[n|N][O|o]) 	echo "Not do any thing"
-								exit 1
+			[nN]|[Nn][Oo]) 	echo "Not do any thing"
 								;;
 
 			*) echo "invalid input";;
 		esac
+	fi
 	;;
 
-0)	echo -n "Pass submitting check, do you want to delete init dir? [yes or no]:"
+0)	echo -n "Pass submitting check, do you want to delete \"init/\" dir? [yes or no]:"
 	read yno
 	case ${yno} in
 
