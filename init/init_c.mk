@@ -18,7 +18,13 @@ NAME = default
 cinit:
 	@mkdir -p $(SRC) $(RES) $(INC) $(OBJ) $(OUT) $(BIN) $(SCRIPTS)
 	@touch $(SRC)/main.c
-	@echo "#include <stdio.h>" > $(SRC)/main.c
+	@echo "#include <stdio.h>" >> $(SRC)/main.c
+	@echo "#include <stdlib.h>" >> $(SRC)/main.c
+	@echo "" >> $(SRC)/main.c
+	@echo "int main(int argc, char* argv[]){" >> $(SRC)/main.c
+	@echo "" >> $(SRC)/main.c
+	@echo "}" >> $(SRC)/main.c
+
 
 .PHONY: cnew
 cnew:
@@ -30,7 +36,7 @@ cnew:
 .PHONY: submitcheck
 submitcheck:
 	@chmod u+x $(INT)/submit_check.sh
-	@./$(INT)/submit_check.sh
+	@./$(INT)/submit_check.sh $(filter-out $@,$(MAKECMDGOALS))
 
 .PHONY: cclean
 cclean:

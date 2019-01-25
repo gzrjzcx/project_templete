@@ -31,6 +31,22 @@ done
 case "${ERROR}" in
 
 1) 	echo -e "Can not pass submitting check, please check by hand..."
+	if [[ ${1}='f' ]]; then
+		echo -n "\033[0;31mViolent Mode\033[0m, do you want to delete init dir? [yes or no]:"
+		read yno
+		case ${yno} in
+
+			[yY]|[yY][Ee][Ss])	rm -rf init
+								rm -rf .git
+								echo "All init files are removed, please do not forget to rename project directory"
+								;;
+
+			[nN]|[n|N][O|o]) 	echo "Not do any thing"
+								exit 1
+								;;
+
+			*) echo "invalid input";;
+		esac
 	;;
 
 0)	echo -n "Pass submitting check, do you want to delete init dir? [yes or no]:"

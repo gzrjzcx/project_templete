@@ -29,12 +29,14 @@ function create_c(){
 		else
 			mkdir -p ${DES}
 			echo "#include <stdio.h>" >> ${DES}/${NAME}
+			echo "#include <stdlib.h>" >> ${DES}/${NAME}
 			echo "" >> ${DES}/${NAME}
 		fi
 	else
 		echo "directory \"${DES}/\" not exists, create \"${DES}/\" firstly..."
 		mkdir -p ${DES}
 			echo "#include <stdio.h>" >> ${DES}/${NAME}
+			echo "#include <stdlib.h>" >> ${DES}/${NAME}
 			echo "" >> ${DES}/${NAME}
 	fi
 }
