@@ -33,7 +33,7 @@ case "${ERROR}" in
 1) 	echo -e "Can not pass submitting check, please check by hand..."
 	if [[ ${1}='f' ]]; then
 		echo -e "\033[1;31m Violent Mode!!! \033[0m"
-		echo -n "Do you want to delete \"init/\" dir? [yes or no]:"
+		echo -n "Do you still want to delete \"init/\" dir? [yes or no]:"
 		read yno
 		case ${yno} in
 
