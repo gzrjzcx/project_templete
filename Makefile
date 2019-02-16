@@ -62,7 +62,7 @@ cnew:
 
 .PHONY: submitcheck
 submitcheck:
-	@make -f $(CMF) submitcheck
+	@make -f $(CMF) submitcheck $(filter-out $@,$(MAKECMDGOALS))
 
 .PHONY: cclean_
 cclean_:
