@@ -1,7 +1,7 @@
 CMF = "init/init_c.mk"
 
 # --------------- set compiler command ---------------
-CC = icc
+CC = gcc
 CCFLAGS = -std=c99
 CCFLAGS += -Wall
 LIB = -lm 
